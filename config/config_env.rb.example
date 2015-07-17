@@ -1,0 +1,6 @@
+# Copy this file to [app]/config/config_env.rb
+# Replace [*] with key
+
+config_env :production do
+  set 'SYM_KEY', [*]
+end

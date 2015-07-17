@@ -1,11 +1,14 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    config_env (0.1.0)
     daemons (1.2.3)
     eventmachine (1.0.7)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
+    rack-ssl-enforcer (0.2.8)
+    rake (10.4.2)
     sinatra (1.4.6)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -20,5 +23,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  config_env
+  rack-ssl-enforcer
+  rake
   sinatra
   thin

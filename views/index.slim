@@ -1,0 +1,36 @@
+table
+  tr
+    - if result
+      td
+        - result.each do |x, y|
+          - y == 1 ? s = '' : s = 's'
+          markdown:
+            - **#{x}**: #{y} star#{s}
+      td
+        | &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+      td
+        - val.each do |x, y|
+          markdown: #{x}: #{y}
+      td
+        | &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    td
+      form action='/' method= 'get'
+        table
+          - list = [ { 'Attacking' => 'attacking', 'Defending' => 'defending',
+                       'Fitness' => 'fitness', 'Goalkeepers' => 'goalkeepers',
+                       'Mental' => 'mental', 'Tactical' => 'tactical',
+                       'Technical' => 'technical'},
+                     { 'Determination' => 'determination',
+                       'Level of Discipline' => 'discipline',
+                       'Motivating' => 'motivating'} ]
+          - list.each do |inputs|
+            - inputs.each do |x,y|
+              tr
+                td
+                  | #{x}: 
+                  - if ['determination', 'motivating', 'discipline'].include? y
+                    input type='number' name="#{y}" min='1' max='20' required='true'
+                  - else
+                    input type='number' name="#{y}" min='1' max='20'
+        div align='center'
+          input type='submit' value='Submit'

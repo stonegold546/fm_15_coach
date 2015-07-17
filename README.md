@@ -1,6 +1,6 @@
 # fm_15_coach
 
-You've probably got here by mistake, this is for a football simulation game (**football manager**) I play.
+You've probably got here by mistake, [this app](https://fm-15-coach.herokuapp.com/) is for a football simulation game (**football manager**) I play.
 
 I use this to calculate the stars of the coaches in the game given their attributes.
 

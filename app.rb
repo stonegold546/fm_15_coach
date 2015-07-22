@@ -8,6 +8,10 @@ configure :development, :test do
   ConfigEnv.path_to_config("#{__dir__}/config/config_env.rb")
 end
 
+configure :production do
+  require 'newrelic_rpm'
+end
+
 # App for Coach Star Calculator
 class FmCoachCalc < Sinatra::Base
   configure :production do

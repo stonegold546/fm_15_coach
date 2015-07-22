@@ -4,6 +4,7 @@ GEM
     config_env (0.1.0)
     daemons (1.2.3)
     eventmachine (1.0.7)
+    newrelic_rpm (3.12.1.298)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
@@ -29,6 +30,7 @@ PLATFORMS
 
 DEPENDENCIES
   config_env
+  newrelic_rpm
   rack-ssl-enforcer
   rake
   redcarpet

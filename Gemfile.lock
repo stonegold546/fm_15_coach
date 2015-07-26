@@ -4,13 +4,13 @@ GEM
     config_env (0.1.0)
     daemons (1.2.3)
     eventmachine (1.0.7)
+    kramdown (1.5.0)
     newrelic_rpm (3.12.1.298)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
     rack-ssl-enforcer (0.2.8)
     rake (10.4.2)
-    redcarpet (3.3.1)
     sinatra (1.4.6)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -30,10 +30,10 @@ PLATFORMS
 
 DEPENDENCIES
   config_env
+  kramdown
   newrelic_rpm
   rack-ssl-enforcer
   rake
-  redcarpet
   sinatra
   slim
   thin

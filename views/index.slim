@@ -10,7 +10,7 @@ table
         | &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
       td
         - JSON.parse(val).each do |x, y|
-          markdown: #{x}: #{y}
+          markdown: #{x.capitalize}: #{y}
         input type='button' value='Reuse values' onclick="copyFunction()"
       td
         | &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp

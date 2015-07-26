@@ -9,28 +9,51 @@ table
       td
         | &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
       td
-        - val.each do |x, y|
+        - JSON.parse(val).each do |x, y|
           markdown: #{x}: #{y}
+        input type='button' value='Reuse values' onclick="copyFunction()"
       td
         | &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
     td
       form action='/' method= 'get'
         table
-          - list = [ { 'Attacking' => 'attacking', 'Defending' => 'defending',
+          - inputs = { 'Attacking' => 'attacking', 'Defending' => 'defending',
                        'Fitness' => 'fitness', 'Goalkeepers' => 'goalkeepers',
                        'Mental' => 'mental', 'Tactical' => 'tactical',
-                       'Technical' => 'technical'},
-                     { 'Determination' => 'determination',
+                       'Technical' => 'technical',
+                       'Determination' => 'determination',
                        'Level of Discipline' => 'discipline',
-                       'Motivating' => 'motivating'} ]
-          - list.each do |inputs|
-            - inputs.each do |x,y|
-              tr
-                td
-                  | #{x}: 
-                  - if ['determination', 'motivating', 'discipline'].include? y
-                    input type='number' name="#{y}" min='1' max='20' required='true'
-                  - else
-                    input type='number' name="#{y}" min='1' max='20'
+                       'Motivating' => 'motivating' }
+          - inputs.each do |x, y|
+            tr
+              td
+                | #{x}: 
+                - if ['determination', 'motivating', 'discipline'].include? y
+                  input type='number' class='data' name="#{y}" min='1' max='20' value='1' required='true'
+                - else
+                  input type='number' class='data' name="#{y}" min='1' max='20' value='1'
         div align='center'
-          input type='submit' value='Submit'
+          table
+            tr
+              td
+                input type='button' value='Clear' onclick="myFunction()"
+              td
+                input type='submit' value='Submit'
+
+- if result
+  javascript:
+    var val = JSON.parse("#{val}".replace(/&quot;/g,'"'));
+
+    function myFunction() {
+      var inputs = document.getElementsByClassName('data');
+      for (idx = 0; idx < inputs.length; ++idx) {
+        inputs[idx].value = '1';
+      }
+    }
+
+    function copyFunction() {
+      var inputs = document.getElementsByClassName('data');
+      for (idx = 0; idx < inputs.length; ++idx) {
+        inputs[idx].value = val[inputs[idx].name];
+      }
+    }

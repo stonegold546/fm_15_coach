@@ -2,6 +2,7 @@ require 'sinatra'
 require 'slim'
 require 'config_env'
 require 'rack-ssl-enforcer'
+require 'json'
 require_relative 'model/coach'
 
 configure :development, :test do
@@ -59,7 +60,7 @@ class FmCoachCalc < Sinatra::Base
                                        'Attacking' => attacking,
                                        'Shooting' => shooting
                                        },
-                             val: params }
+                             val: params.to_json }
     else
       slim :index, locals: { result: nil, val: nil }
     end

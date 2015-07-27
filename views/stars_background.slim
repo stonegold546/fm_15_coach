@@ -1,0 +1,36 @@
+markdown:
+  ---
+
+  ### Level of Discipline, Determination, and Motivation are required for all stars.
+
+- stars = [ \
+    [['strength & aerobics'], ['fitness'], ['-']],
+    [['attacking'], ['attacking'], ['tactical']],
+    [['shot stopping'], ['goalkeepers'], ['tactical']],
+    [['handling'], ['goalkeepers'], ['technical']],
+    [['tactics'], ['tactical'], ['-']],
+    [['ball control'], ['technical'], ['mental']],
+    [['defending'], ['defending'], ['tactical']],
+    [['attacking'], ['attacking'], ['tactical']],
+    [['shooting'], ['technical'], ['attacking']] \
+  ]
+
+table cellpadding='3'
+  th Star
+  th Major attribute(s)
+  th Minor attribute(s)
+  - stars.each do |x, y, z|
+    tr
+      td align='center'
+        - x.each do |a|
+          b #{a.split.map(&:capitalize).join(' ')}
+      td align='center'
+        - y.each do |b|
+          | #{b.capitalize}
+      td align='center'
+        - z.each do |c|
+          | #{c.capitalize}
+
+markdown:
+  ---
+  For in-depth explanations, check [How to Find the Best Coaches in Football Manager](http://passion4fm.com/find-best-coaches-in-football-manager/){:target='_blank'}.

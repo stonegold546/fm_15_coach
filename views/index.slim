@@ -1,4 +1,4 @@
-table
+table cellpadding='10'
   tr
     - if result
       td
@@ -7,16 +7,12 @@ table
           markdown:
             - **#{x}**: #{y} star#{s}
       td
-        | &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-      td
         - JSON.parse(val).each do |x, y|
           markdown: #{x.capitalize}: #{y}
         input type='button' value='Reuse values' onclick="copyFunction()"
-      td
-        | &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
     td
       form action='/' method= 'get'
-        table
+        table cellpadding='3'
           - inputs = { 'Attacking' => 'attacking', 'Defending' => 'defending',
                        'Fitness' => 'fitness', 'Goalkeepers' => 'goalkeepers',
                        'Mental' => 'mental', 'Tactical' => 'tactical',

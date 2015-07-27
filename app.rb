@@ -3,6 +3,7 @@ require 'slim'
 require 'config_env'
 require 'rack-ssl-enforcer'
 require 'json'
+require 'slim/include'
 require_relative 'model/coach'
 
 configure :development, :test do

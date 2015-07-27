@@ -95,7 +95,6 @@ class FmCoachCalc < Sinatra::Base
                          coach.attacking(x[1].to_i, x[6].to_i),
                          coach.shooting(x[7].to_i, x[1].to_i))
         result[idx][10..-1] = x[1..-1]
-        logger.info "RESULT: #{result[idx].length}"
       end
       slim :multi_result, locals: { result: result }
     rescue => e

@@ -26,13 +26,13 @@ javascript:
   function colourMeFunction() {
     var inputs = document.getElementsByClassName('colour');
     for (idx = 0; idx < inputs.length; ++idx) {
-      val = parseFloat(inputs[idx].innerText);
+      val = parseFloat(inputs[idx].textContent);
       if (val > 4) {
-        inputs[idx].style.backgroundColor = 'red';
+        inputs[idx].style.backgroundColor = '#ff0000';
       } else if (val > 3.5) {
-        inputs[idx].style.backgroundColor = 'green';
+        inputs[idx].style.backgroundColor = '#00ff00';
       } else if (val > 2.5) {
-        inputs[idx].style.backgroundColor = 'yellow';
+        inputs[idx].style.backgroundColor = '#ffff00';
       }
     }
   }

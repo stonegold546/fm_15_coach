@@ -1,0 +1,15 @@
+div align='left'
+  markdown:
+    ## Instructions for multiple coach search
+
+    1. Search for coaches, using the table below as a guide.
+    1. Import [this view](https://www.dropbox.com/s/ubebghm4orf4dgw/coach_scouting_view_0D1F973D-A85D-41FB-9214-94C924A4F597.fmf?dl=0){:target='_blank'} into the game and use it to arrange the search results.
+    1. Print the staff search page, by default with Ctrl + P, print as a web page.
+    1. Finally, upload the saved file (web page) using the form below.
+
+    #### File Upload
+
+  form method='post' action='/multi' enctype='multipart/form-data'
+    | Select file to upload: 
+    input type='file' name='coach_file' required='true'
+    input type='submit' value='Upload'

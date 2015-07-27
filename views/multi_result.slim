@@ -1,0 +1,45 @@
+- headers = [ 'Name', 'Strength', 'Aerobics', 'Shot Stopping', 'Handling',
+              'Tactics', 'Ball Control', 'Defending', 'Attacking', 'Shooting',
+              'Att', 'Def', 'Fit', 'Gk', 'Men', 'Tac', 'Tec', 'Det', 'Dis',
+              'Mot']
+
+table cellpadding='3'
+  tr
+    input type='button' onclick='colourMeFunction()' value='Colour me up!' style='font-size: 16px; width: 9em; height: 2em; color: red; margin-right: 5px'
+    input type='button' onclick='killColourFunction()' value='Remove colours' style='font-size: 16px; width: 9em; height: 2em; margin-left: 5px'
+  tr
+    - headers.each do |header|
+      th #{header}
+  - result.each do |coach|
+    tr
+      - coach.each_with_index do |attrib, idx|
+        - if 0 < idx && idx < 10
+          td class='colour'
+           b #{attrib}
+        - elsif idx == 0
+          td #{attrib}
+        - else
+          td
+            small #{attrib}
+
+javascript:
+  function colourMeFunction() {
+    var inputs = document.getElementsByClassName('colour');
+    for (idx = 0; idx < inputs.length; ++idx) {
+      val = parseFloat(inputs[idx].innerText);
+      if (val > 4) {
+        inputs[idx].style.backgroundColor = 'red';
+      } else if (val > 3.5) {
+        inputs[idx].style.backgroundColor = 'green';
+      } else if (val > 2.5) {
+        inputs[idx].style.backgroundColor = 'yellow';
+      }
+    }
+  }
+
+  function killColourFunction() {
+    var inputs = document.getElementsByClassName('colour');
+    for (idx = 0; idx < inputs.length; ++idx) {
+      inputs[idx].style.backgroundColor = '';
+    }
+  }

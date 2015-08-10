@@ -74,7 +74,6 @@ table cellpadding='10'
         myResult.onreadystatechange = function() {
           var stars = document.getElementsByClassName('star');
           var data = JSON.parse(myResult.responseText);
-          console.log(data);
           var inner_idx = 0;
           for (var i in data) {
             stars[inner_idx].innerHTML = data[i];

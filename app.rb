@@ -31,7 +31,7 @@ class FmCoachCalc < Sinatra::Base
       params['motivating'] ? params['motivating'].to_i : 1
     )
     strength = coach.strength(params['fitness'] ? params['fitness'].to_i : 1)
-    tactics = coach.strength(params['tactical'] ? params['tactical'].to_i : 1)
+    tactics = coach.tactics(params['tactical'] ? params['tactical'].to_i : 1)
     shot_stopping = coach.goalkeeping(
       params['goalkeepers'] ? params['goalkeepers'].to_i : 1,
       params['tactical'] ? params['tactical'].to_i : 1

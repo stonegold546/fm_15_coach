@@ -4,8 +4,12 @@ table cellpadding='10'
       td
         - result.each do |x, y|
           - y == 1 ? s = '' : s = 's'
-          markdown:
-            - **#{x}**: #{y} star#{s}
+          p
+            b #{x}: 
+            star class='star'
+              | #{y}
+            |  star#{s}
+    - unless val.length == 2
       td
         - JSON.parse(val).each do |x, y|
           markdown: #{x.capitalize}: #{y}
@@ -34,13 +38,11 @@ table cellpadding='10'
               td
                 input type='submit' value='Submit'
               td
-                input type='button' value='Clear' onclick="myFunction()"
+                input type='button' value='Clear' onclick="clearFunction()"
 
 - if result
   javascript:
-    var val = JSON.parse("#{val}".replace(/&quot;/g,'"'));
-
-    function myFunction() {
+    function clearFunction() {
       var inputs = document.getElementsByClassName('data');
       for (idx = 0; idx < inputs.length; ++idx) {
         inputs[idx].value = '1';
@@ -48,8 +50,36 @@ table cellpadding='10'
     }
 
     function copyFunction() {
+      var val = JSON.parse("#{val}".replace(/&quot;/g,'"'));
       var inputs = document.getElementsByClassName('data');
       for (idx = 0; idx < inputs.length; ++idx) {
         inputs[idx].value = val[inputs[idx].name];
       }
+    }
+
+    var inputs = document.getElementsByClassName('data');
+    for (idx = 0; idx < inputs.length; ++idx) {
+      var input = inputs[idx];
+      input.addEventListener('input', function() {
+        var myResult = new XMLHttpRequest();
+        var url = '/?api=y'.concat(
+          '&attacking=', inputs[0].value, '&defending=', inputs[1].value,
+          '&fitness=', inputs[2].value, '&goalkeepers=', inputs[3].value,
+          '&mental=', inputs[4].value, '&tactical=', inputs[5].value,
+          '&technical=', inputs[6].value, '&determination=', inputs[7].value,
+          '&discipline=', inputs[8].value, '&motivating=', inputs[9].value
+        );
+        myResult.open('GET', url, true);
+        myResult.send();
+        myResult.onreadystatechange = function() {
+          var stars = document.getElementsByClassName('star');
+          var data = JSON.parse(myResult.responseText);
+          console.log(data);
+          var inner_idx = 0;
+          for (var i in data) {
+            stars[inner_idx].innerHTML = data[i];
+            inner_idx++;
+          }
+        }
+      });
     }

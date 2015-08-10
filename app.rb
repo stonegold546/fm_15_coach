@@ -25,35 +25,45 @@ class FmCoachCalc < Sinatra::Base
   end
 
   get '/' do
-    if params['discipline']
-      coach = Coach.new(params['discipline'].to_i, params['determination'].to_i,
-                        params['motivating'].to_i)
-      strength = coach.strength(params['fitness'] ? params['fitness'].to_i : 0)
-      tactics = coach.strength(params['tactical'] ? params['tactical'].to_i : 0)
-      shot_stopping = coach.goalkeeping(
-        params['goalkeepers'] ? params['goalkeepers'].to_i : 0,
-        params['tactical'] ? params['tactical'].to_i : 0
-      )
-      handling = coach.goalkeeping(
-        params['goalkeepers'] ? params['goalkeepers'].to_i : 0,
-        params['technical'] ? params['technical'].to_i : 0
-      )
-      defending = coach.defending(
-        params['defending'] ? params['defending'].to_i : 0,
-        params['tactical'] ? params['tactical'].to_i : 0
-      )
-      ball_control = coach.ball_control(
-        params['technical'] ? params['technical'].to_i : 0,
-        params['mental'] ? params['mental'].to_i : 0
-      )
-      attacking = coach.attacking(
-        params['attacking'] ? params['attacking'].to_i : 0,
-        params['tactical'] ? params['tactical'].to_i : 0
-      )
-      shooting = coach.shooting(
-        params['technical'] ? params['technical'].to_i : 0,
-        params['attacking'] ? params['attacking'].to_i : 0
-      )
+    coach = Coach.new(
+      params['discipline'] ? params['discipline'].to_i : 1,
+      params['determination'] ? params['determination'].to_i : 1,
+      params['motivating'] ? params['motivating'].to_i : 1
+    )
+    strength = coach.strength(params['fitness'] ? params['fitness'].to_i : 1)
+    tactics = coach.strength(params['tactical'] ? params['tactical'].to_i : 1)
+    shot_stopping = coach.goalkeeping(
+      params['goalkeepers'] ? params['goalkeepers'].to_i : 1,
+      params['tactical'] ? params['tactical'].to_i : 1
+    )
+    handling = coach.goalkeeping(
+      params['goalkeepers'] ? params['goalkeepers'].to_i : 1,
+      params['technical'] ? params['technical'].to_i : 1
+    )
+    defending = coach.defending(
+      params['defending'] ? params['defending'].to_i : 1,
+      params['tactical'] ? params['tactical'].to_i : 1
+    )
+    ball_control = coach.ball_control(
+      params['technical'] ? params['technical'].to_i : 1,
+      params['mental'] ? params['mental'].to_i : 1
+    )
+    attacking = coach.attacking(
+      params['attacking'] ? params['attacking'].to_i : 1,
+      params['tactical'] ? params['tactical'].to_i : 1
+    )
+    shooting = coach.shooting(
+      params['technical'] ? params['technical'].to_i : 1,
+      params['attacking'] ? params['attacking'].to_i : 1
+    )
+    if params['api']
+      { 'Strength' => strength, 'Aerobics' => strength,
+        'Shot Stopping' => shot_stopping, 'Handling' => handling,
+        'Tactics' => tactics, 'Ball Control' => ball_control,
+        'Defending' => defending, 'Attacking' => attacking,
+        'Shooting' => shooting
+      }.to_json
+    else
       slim :index, locals: { result: { 'Strength' => strength,
                                        'Aerobics' => strength,
                                        'Shot Stopping' => shot_stopping,
@@ -65,8 +75,6 @@ class FmCoachCalc < Sinatra::Base
                                        'Shooting' => shooting
                                        },
                              val: params.to_json }
-    else
-      slim :index, locals: { result: nil, val: nil }
     end
   end
 

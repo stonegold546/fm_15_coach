@@ -42,8 +42,9 @@ table cellpadding='10'
 
 - if result
   javascript:
+    var inputs = document.getElementsByClassName('data');
+
     function clearFunction() {
-      var inputs = document.getElementsByClassName('data');
       for (idx = 0; idx < inputs.length; ++idx) {
         inputs[idx].value = '1';
       }
@@ -51,16 +52,23 @@ table cellpadding='10'
 
     function copyFunction() {
       var val = JSON.parse("#{val}".replace(/&quot;/g,'"'));
-      var inputs = document.getElementsByClassName('data');
       for (idx = 0; idx < inputs.length; ++idx) {
         inputs[idx].value = val[inputs[idx].name];
       }
     }
 
-    var inputs = document.getElementsByClassName('data');
     for (idx = 0; idx < inputs.length; ++idx) {
       var input = inputs[idx];
       input.addEventListener('input', function() {
+        for (ind = 0; ind < inputs.length; ++ind) {
+          if (parseInt(inputs[ind].value) < 1) {
+            inputs[ind].value = '1';
+          } else if (inputs[ind].value.length > 2) {
+            inputs[ind].value = inputs[ind].value.substring(0, 2);
+          } else if (parseInt(inputs[ind].value) > 20) {
+            inputs[ind].value = '20';
+          }
+        }
         var myResult = new XMLHttpRequest();
         var url = '/?api=y'.concat(
           '&attacking=', inputs[0].value, '&defending=', inputs[1].value,

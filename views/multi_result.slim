@@ -22,24 +22,4 @@ table cellpadding='3'
           td
             small #{attrib}
 
-javascript:
-  function colourMeFunction() {
-    var inputs = document.getElementsByClassName('colour');
-    for (idx = 0; idx < inputs.length; ++idx) {
-      val = parseFloat(inputs[idx].textContent);
-      if (val > 4) {
-        inputs[idx].style.backgroundColor = '#ff0000';
-      } else if (val > 3.5) {
-        inputs[idx].style.backgroundColor = '#00ff00';
-      } else if (val > 2.5) {
-        inputs[idx].style.backgroundColor = '#ffff00';
-      }
-    }
-  }
-
-  function killColourFunction() {
-    var inputs = document.getElementsByClassName('colour');
-    for (idx = 0; idx < inputs.length; ++idx) {
-      inputs[idx].style.backgroundColor = '';
-    }
-  }
+script src='multi.js'

@@ -63,13 +63,15 @@ for (idx = 0; idx < inputs.length; idx += 1) {
         myResult.open('GET', url, true);
         myResult.send();
         myResult.onreadystatechange = function () {
-            var stars = document.getElementsByClassName('star'),
-                data = JSON.parse(myResult.responseText),
-                inner_idx = 0,
-                i;
-            for (i in data) {
-                stars[inner_idx].innerHTML = data[i];
-                inner_idx += 1;
+            if (myResult.readyState === 4 && myResult.status === 200) {
+                var stars = document.getElementsByClassName('star'),
+                    data = JSON.parse(myResult.responseText),
+                    inner_idx = 0,
+                    i;
+                for (i in data) {
+                    stars[inner_idx].innerHTML = data[i];
+                    inner_idx += 1;
+                }
             }
         };
     });

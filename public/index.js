@@ -29,28 +29,7 @@ for (idx = 0; idx < inputs.length; idx += 1) {
         "use strict";
         var ind = 0,
             myResult = new XMLHttpRequest(),
-            url = '/?api=y'.concat(
-                '&attacking=',
-                inputs[0].value,
-                '&defending=',
-                inputs[1].value,
-                '&fitness=',
-                inputs[2].value,
-                '&goalkeepers=',
-                inputs[3].value,
-                '&mental=',
-                inputs[4].value,
-                '&tactical=',
-                inputs[5].value,
-                '&technical=',
-                inputs[6].value,
-                '&determination=',
-                inputs[7].value,
-                '&discipline=',
-                inputs[8].value,
-                '&motivating=',
-                inputs[9].value
-            );
+            url;
         for (ind; ind < inputs.length; ind += 1) {
             if (parseInt((inputs[ind].value), 10) < 1) {
                 inputs[ind].value = '1';
@@ -60,6 +39,28 @@ for (idx = 0; idx < inputs.length; idx += 1) {
                 inputs[ind].value = '20';
             }
         }
+        url = '/?api=y'.concat(
+            '&attacking=',
+            inputs[0].value,
+            '&defending=',
+            inputs[1].value,
+            '&fitness=',
+            inputs[2].value,
+            '&goalkeepers=',
+            inputs[3].value,
+            '&mental=',
+            inputs[4].value,
+            '&tactical=',
+            inputs[5].value,
+            '&technical=',
+            inputs[6].value,
+            '&determination=',
+            inputs[7].value,
+            '&discipline=',
+            inputs[8].value,
+            '&motivating=',
+            inputs[9].value
+        );
         myResult.open('GET', url, true);
         myResult.send();
         myResult.onreadystatechange = function () {

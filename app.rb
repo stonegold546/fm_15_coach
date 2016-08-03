@@ -109,4 +109,8 @@ class FmCoachCalc < Sinatra::Base
       logger.error e
     end
   end
+
+  get '/keybase.txt' do
+    File.read(File.join('public', 'keybase.txt'))
+  end
 end

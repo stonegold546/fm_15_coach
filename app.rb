@@ -61,8 +61,7 @@ class FmCoachCalc < Sinatra::Base
         'Shot Stopping' => shot_stopping, 'Handling' => handling,
         'Tactics' => tactics, 'Ball Control' => ball_control,
         'Defending' => defending, 'Attacking' => attacking,
-        'Shooting' => shooting
-      }.to_json
+        'Shooting' => shooting }.to_json
     else
       slim :index, locals: { result: { 'Strength' => strength,
                                        'Aerobics' => strength,
@@ -72,8 +71,7 @@ class FmCoachCalc < Sinatra::Base
                                        'Ball Control' => ball_control,
                                        'Defending' => defending,
                                        'Attacking' => attacking,
-                                       'Shooting' => shooting
-                                       },
+                                       'Shooting' => shooting },
                              val: params.to_json }
     end
   end

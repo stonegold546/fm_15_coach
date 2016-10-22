@@ -41,3 +41,9 @@ DEPENDENCIES
   sinatra
   slim
   thin
+
+RUBY VERSION
+   ruby 2.2.0p0
+
+BUNDLED WITH
+   1.13.6

@@ -54,9 +54,9 @@ class Coach
     goalkeeping(defending, tactical)
   end
 
-  def ball_att_shoot(var_1, var_2)
+  def ball_att_shoot(var1, var2)
     # Ball control, attacking, and shooting share similar structure
-    formula = var_1 * 6 + var_2 * 3 + ddm(2)
+    formula = var1 * 6 + var2 * 3 + ddm(2)
     final_check(formula, 60)
   end
 
